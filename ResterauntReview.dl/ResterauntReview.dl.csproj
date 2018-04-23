@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Contexts\ApplicationDbContext.cs" />
     <Compile Include="Migrations\201804221642094_Initial.cs" />
     <Compile Include="Migrations\201804221642094_Initial.Designer.cs">
       <DependentUpon>201804221642094_Initial.cs</DependentUpon>
@@ -64,6 +64,9 @@
     <Compile Include="Models\Resteraunt.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDataContext.cs" />
+    <Compile Include="Repositories\ResterauntRepository.cs" />
+    <Compile Include="Repositories\ReviewsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

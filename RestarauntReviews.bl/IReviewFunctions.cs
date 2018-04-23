@@ -3,6 +3,6 @@
     interface IReviewFunctions
     {
 
-        void List<Review>();
+        void List<Review>(int ResterauntId);
     }
 }
