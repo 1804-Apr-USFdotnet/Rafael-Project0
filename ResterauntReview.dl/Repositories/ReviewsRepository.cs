@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResterauntReview.dl.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,15 @@ namespace ResterauntReview.dl.Repositories
         {
 
             this.DataContext = DataContext;
+        }
+
+        public List<Review> GetReviews()
+        {
+
+            return DataContext.Reviews.ToList();
+
+
+
         }
 
 

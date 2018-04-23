@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ResterauntReview.dl.Models
 {
-   public   class Resteraunt
+   public  class Resteraunt
     {
 
         [Key]

@@ -12,8 +12,11 @@ namespace RestarauntReviews.bl
     {
 
         ResterauntRepository resteraunt = new ResterauntRepository();
+        ReviewsRepository reviews = new ReviewsRepository();
+
         public void GetAverageOfAllResterauntReviews()
         {
+           
             throw new NotImplementedException();
         }
 

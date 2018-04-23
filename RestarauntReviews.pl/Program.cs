@@ -16,6 +16,9 @@ namespace RestarauntReviews.pl
             ResterauntFunctions rest = new ResterauntFunctions();
             ReviewFunctions rev = new ReviewFunctions();
             rest.GetResterauntDetails();
+
+
+            Console.WriteLine(rest.ConvertToJson());
             rev.GetAverageResterauntReviews(2);
             Console.ReadLine();
 
