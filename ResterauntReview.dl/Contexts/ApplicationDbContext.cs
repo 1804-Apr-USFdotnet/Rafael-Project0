@@ -9,16 +9,12 @@ namespace ResterauntReview.dl
    public  class ApplicationDbContext: DbContext
     {
 
-        public ApplicationDbContext(): base("DataContext")
+        public ApplicationDbContext(): base("name=DataContext")
         {
 
 
         }
 
-        public new IDbSet<T> Set<T>() where T : class
-        {
-            return base.Set<T>();
-        }
 
      
 

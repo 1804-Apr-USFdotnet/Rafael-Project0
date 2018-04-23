@@ -36,9 +36,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,9 +64,9 @@
     <Compile Include="Migrations\201804221657122_Add_Resteraunt.Designer.cs">
       <DependentUpon>201804221657122_Add_Resteraunt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804221659590_Changed Name of Columns.cs" />
-    <Compile Include="Migrations\201804221659590_Changed Name of Columns.Designer.cs">
-      <DependentUpon>201804221659590_Changed Name of Columns.cs</DependentUpon>
+    <Compile Include="Migrations\201804230214506_Fixed issue with updating database.cs" />
+    <Compile Include="Migrations\201804230214506_Fixed issue with updating database.Designer.cs">
+      <DependentUpon>201804230214506_Fixed issue with updating database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Resteraunt.cs" />
@@ -72,6 +80,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,8 +95,8 @@
     <EmbeddedResource Include="Migrations\201804221657122_Add_Resteraunt.resx">
       <DependentUpon>201804221657122_Add_Resteraunt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804221659590_Changed Name of Columns.resx">
-      <DependentUpon>201804221659590_Changed Name of Columns.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804230214506_Fixed issue with updating database.resx">
+      <DependentUpon>201804230214506_Fixed issue with updating database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

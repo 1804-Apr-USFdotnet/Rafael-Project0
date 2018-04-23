@@ -3,6 +3,8 @@
     interface IReviewFunctions
     {
 
-        void List<Review>(int ResterauntId);
+        void GetResterauntReviews(int ResterauntId);
+        void GetAverageResterauntReviews(int ResterauntId);
+        void GetAverageOfAllResterauntReviews();
     }
 }

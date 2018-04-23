@@ -6,7 +6,39 @@ using System.Threading.Tasks;
 
 namespace ResterauntReview.dl.Repositories
 {
-    class ReviewsRepository
+   public class ReviewsRepository
     {
+
+        ApplicationDbContext DataContext = new ApplicationDbContext();
+
+
+        public ReviewsRepository()
+        {
+
+            
+        }
+        public ReviewsRepository(ApplicationDbContext DataContext)
+        {
+
+            this.DataContext = DataContext;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -7,13 +7,13 @@ namespace ResterauntReview.dl.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangedNameofColumns : IMigrationMetadata
+    public sealed partial class Fixedissuewithupdatingdatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedNameofColumns));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Fixedissuewithupdatingdatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804221659590_Changed Name of Columns"; }
+            get { return "201804230214506_Fixed issue with updating database"; }
         }
         
         string IMigrationMetadata.Source

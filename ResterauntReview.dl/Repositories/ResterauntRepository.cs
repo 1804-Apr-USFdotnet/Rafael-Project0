@@ -1,6 +1,7 @@
 ﻿using ResterauntReview.dl.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -8,19 +9,24 @@ using System.Threading.Tasks;
 
 namespace ResterauntReview.dl.Repositories
 {
-  public  class ResterauntRepository
-    {    
+  public   class ResterauntRepository : ApplicationDbContext
+    {
+        private readonly ApplicationDbContext dataContext = new ApplicationDbContext();
 
-    private readonly ApplicationDbContext dataContext;
+
+        public ResterauntRepository()
+        {
+            
+        }
 
         public ResterauntRepository(ApplicationDbContext dataContext)
         {
             this.dataContext = dataContext;
         }
 
-        public virtual IEnumerable<Resteraunt> GetAllResteraunts()
+        public  IEnumerable<Resteraunt> GetAllResteraunts()
         {
-            return dataContext.Resteraunts.ToList();
+           return  dataContext.Resteraunts.ToList();
         }
 
         public Resteraunt GetResterauntById(int id)
@@ -34,10 +40,6 @@ namespace ResterauntReview.dl.Repositories
             this.SaveChanges();
         }
 
-        public virtual void UpdateAndSubmit(T entity)
-        {
-            this.SaveChanges();
-        }
 
         public virtual void DeleteAndSubmit(Resteraunt entity)
         {
