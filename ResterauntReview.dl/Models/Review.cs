@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ResterauntReview.dl.Models
 {
@@ -14,6 +15,9 @@ namespace ResterauntReview.dl.Models
         public string EmailOfReviewer{ get; set; }
         public double   Rating { get; set; }
         public string  ReviewComment  { get; set; }
+        [ForeignKey("ResterauntId")]
+        Resteraunt  Resteraunt { get; set; }
+        public int ResterauntId { get; set; }
         public DateTime DateOfReview { get; set; }
     }
 }

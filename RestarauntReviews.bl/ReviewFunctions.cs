@@ -1,4 +1,5 @@
 ﻿using NLog;
+using ResterauntReview.dl.Models;
 using ResterauntReview.dl.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,27 +9,29 @@ using System.Threading.Tasks;
 
 namespace RestarauntReviews.bl
 {
-  public  class ReviewFunctions : IReviewFunctions
+    public class ReviewFunctions : IReviewFunctions
     {
 
-        ResterauntRepository resteraunt = new ResterauntRepository();
-        ReviewsRepository reviews = new ReviewsRepository();
+        ResterauntRepository resterauntRepo = new ResterauntRepository();
+        ReviewsRepository reviewsRepo = new ReviewsRepository();
 
-        public void GetAverageOfAllResterauntReviews()
+        public void GetAveragesOfAllResterauntReviews()
         {
-           
-            throw new NotImplementedException();
+
+            reviewsRepo.GetReviews();
         }
+
 
         public void GetAverageResterauntReviews(int ResterauntId)
         {
-          try
+            try
             {
                 int zero = 0;
                 int result = 5 / zero;
             }
-            catch (DivideByZeroException ex) { 
-            
+            catch (DivideByZeroException ex)
+            {
+
                 Logger logger = LogManager.GetLogger("databaseLogger");
 
                 // add custom message and pass in the exception
@@ -38,11 +41,33 @@ namespace RestarauntReviews.bl
             }
         }
 
-        public void GetResterauntReviews(int ResterauntId)
+        public void GetResterauntReviews(string name)
         {
-            throw new NotImplementedException();
+            var resteraunts = resterauntRepo.GetAllResteraunts();
+            var reviewsList = reviewsRepo.GetReviews();
+
+
+            var resterauntReviews = from res in resteraunts
+                                    join rev in reviewsList
+                                    on res.ResterauntId equals rev.ResterauntId
+                                    where res.Name.StartsWith(name)
+                                    group new { rev = rev, res = res } by rev.ResterauntId;                                  ;
+
+            foreach (var item in resterauntReviews)
+            {
+                //Console.WriteLine(item.Key);
+
+                foreach (var x in item)
+                {
+                    Console.WriteLine($"{x.res.Name} has a rating of {x.rev.Rating}");
+                 
+                }
+            }
         }
 
-    
     }
-}
+    }
+
+        
+
+

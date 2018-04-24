@@ -1,10 +1,12 @@
-﻿namespace RestarauntReviews.bl
+﻿using ResterauntReview.dl.Models;
+
+namespace RestarauntReviews.bl
 {
     interface IReviewFunctions
     {
 
-        void GetResterauntReviews(int ResterauntId);
+        void GetResterauntReviews(string name);
         void GetAverageResterauntReviews(int ResterauntId);
-        void GetAverageOfAllResterauntReviews();
+        void GetAveragesOfAllResterauntReviews();
     }
 }

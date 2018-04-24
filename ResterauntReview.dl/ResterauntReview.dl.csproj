@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201804230214506_Fixed issue with updating database.Designer.cs">
       <DependentUpon>201804230214506_Fixed issue with updating database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804232032142_added ResterauntId.cs" />
+    <Compile Include="Migrations\201804232032142_added ResterauntId.Designer.cs">
+      <DependentUpon>201804232032142_added ResterauntId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Resteraunt.cs" />
     <Compile Include="Models\Review.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804230214506_Fixed issue with updating database.resx">
       <DependentUpon>201804230214506_Fixed issue with updating database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804232032142_added ResterauntId.resx">
+      <DependentUpon>201804232032142_added ResterauntId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

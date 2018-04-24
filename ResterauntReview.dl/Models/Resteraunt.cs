@@ -15,6 +15,7 @@ namespace ResterauntReview.dl.Models
     
         public int ResterauntId { get; set; }
         public string Name { get; set; }
+        
 
 
         public virtual ICollection<Review>  Reviews{ get; set; }

@@ -54,13 +54,7 @@ namespace RestarauntReviews.bl
         }
 
 
-        //ResterauntList.Add();
-        //ResterauntList.Add();
-        //ResterauntList.Add();
-        //ResterauntList.Add();
-        //ResterauntList.Add();
-        //ResterauntList.Add();
-        //ResterauntList.Add();
+     
 
         public void GetResterauntDetails()
         {
@@ -68,16 +62,30 @@ namespace RestarauntReviews.bl
             var Rest = resteraunt.GetAllResteraunts();
             foreach (var item in Rest)
             {
-                Console.WriteLine($" Resteraunt Name: {item.Name}");
+                Console.WriteLine($" Resteraunt Name: {item.Name} ");
             }
         }
 
         public  string ConvertToJson()
         {
 
-            var Rest = resteraunt.GetAllResteraunts();
+            string json = "";
+            try
+            {
 
-            var json = JsonConvert.SerializeObject(resteraunt.GetAllResteraunts());
+                var Rest = resteraunt.GetAllResteraunts();
+
+                 json = JsonConvert.SerializeObject(resteraunt.GetAllResteraunts());
+      
+
+            }
+
+            catch
+            {
+
+
+            }
+
             return json;
         }
     
