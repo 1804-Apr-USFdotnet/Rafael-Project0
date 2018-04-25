@@ -20,6 +20,7 @@ namespace RestarauntReviews.pl
 
             Console.WriteLine(rest.ConvertToJson());
             rev.GetAverageResterauntReviews(2);
+            rev.getResterauntAverages();
             rev.GetResterauntReviews("Har");
             Console.ReadLine();
 

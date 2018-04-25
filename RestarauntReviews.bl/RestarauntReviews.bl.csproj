@@ -64,11 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorHandling\ErrorManager.cs" />
+    <Compile Include="ErrorHandling\IErrorManager.cs" />
     <Compile Include="IResterauntFunctions.cs" />
     <Compile Include="IReviewFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResterauntFunctions.cs" />
     <Compile Include="ReviewFunctions.cs" />
+    <Compile Include="UserInputHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ResterauntReview.dl\ResterauntReview.dl.csproj">
