@@ -6,21 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestarauntReviews.bl
 {
-   public static class UserInputHandler
+    interface IuserInputHandler
     {
-        static void UserCommandOptions()
-        {
-
-
-            Console.WriteLine("Enter ? for ");
-
-
-
-
-        }
-
-
-
-
     }
 }

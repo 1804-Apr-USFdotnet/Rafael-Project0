@@ -99,26 +99,20 @@ namespace RestarauntReviews.bl
         public void getResterauntAverages()
         {
 
-
-
             var resteraunts = resterauntRepo.GetAllResteraunts();
             var reviewsList = reviewsRepo.GetReviews();
 
-            var result = reviewsList.GroupBy(s => s.ResterauntId)
-                     .Select(g => new { Id = g.Key, Avg = g.Average(s => s.Rating) });
+            var results =
+                reviewsList.GroupBy(x => x.ResterauntId, x => new { x.ResterauntId, x.Rating })
+                          .Join(resteraunts, x => x.Key, y => y.ResterauntId, (x, y) => new {
+                              Name = y.Name,
+                              AvgRating = x.Average(s => s.Rating)
+                          });
 
-            foreach (var res in result)
+            foreach (var res in results)
             {
-                string name = "";
-                foreach (var rest in resteraunts)
-                {
-                    if (res.Id == rest.ResterauntId)
-                    {
-                        name = rest.Name;
-                        break;
-                    }
-                }
-                Console.WriteLine($"{name} has a rating of {res.Avg}");
+           
+                Console.WriteLine($"{res.Name} has a rating of {res.AvgRating}");
             }
    
             }
