@@ -12,12 +12,21 @@ namespace RestarauntReviews.bl
 {
     public  class ResterauntFunctions : IResterauntFunctions
     {
-        ResterauntRepository resteraunt = new ResterauntRepository();
+        #region Declaration of Variables
+        ResterauntRepository resterauntRepo = new ResterauntRepository();
+        ReviewsRepository reviewsRepo = new ReviewsRepository();
+        ErrorManager errorManager = new ErrorManager();
+        List<Resteraunt> resterauntList;
+        List<Review> reviewList;
+
+        #endregion
         public ResterauntFunctions()
         {
+         
+                resterauntList = resterauntRepo.GetAllResteraunts().ToList();
 
-            //addResteraunts();
-
+                reviewList = reviewsRepo.GetReviews().ToList();
+           
 
         }
 
@@ -39,11 +48,13 @@ namespace RestarauntReviews.bl
         public void GetResterauntDetails()
         {
 
-            var Rest = resteraunt.GetAllResteraunts();
-            foreach (var item in Rest)
-            {
-                Console.WriteLine($" Resteraunt Name: {item.Name} ");
-            }
+            
+
+            //var Rest = resteraunt.GetAllResteraunts();
+            //foreach (var item in Rest)
+            //{
+            //    Console.WriteLine($" Resteraunt Name: {item.Name} ");
+            //}
         }
 
 
@@ -54,9 +65,9 @@ namespace RestarauntReviews.bl
             try
             {
 
-                var Rest = resteraunt.GetAllResteraunts();
+                var Rest = resterauntRepo.GetAllResteraunts();
 
-                 json = JsonConvert.SerializeObject(resteraunt.GetAllResteraunts());
+                 json = JsonConvert.SerializeObject(resterauntRepo.GetAllResteraunts());
 
             }
 
@@ -69,5 +80,16 @@ namespace RestarauntReviews.bl
             return json;
         }
     
+
+        public void searchByPartialName(string userInput)
+        {
+          var resteraunt =   resterauntList.Where(x => x.Name.StartsWith(userInput));
+
+            foreach (var item in resteraunt)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+        }
     }
 }

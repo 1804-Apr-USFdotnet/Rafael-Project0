@@ -70,6 +70,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestarauntReviews.bl\RestarauntReviews.bl.csproj">
+      <Project>{4AE9D954-D867-4E21-9B8F-734FACE84193}</Project>
+      <Name>RestarauntReviews.bl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResterauntReview.dl\ResterauntReview.dl.csproj">
+      <Project>{FA678942-5B7D-4B43-960F-E2FC011B8894}</Project>
+      <Name>ResterauntReview.dl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

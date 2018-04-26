@@ -24,11 +24,16 @@ namespace ResterauntReview.dl.Repositories
             this.dataContext = dataContext;
         }
 
-        public  IEnumerable<Resteraunt> GetAllResteraunts()
+        public  ICollection<Resteraunt> GetAllResteraunts()
         {
            return  dataContext.Resteraunts.ToList();
         }
 
+        public List<int> ConvertNameIntoId(string resterauntName)
+        {
+            var ids = dataContext.Resteraunts.Where(x => x.Name == resterauntName).Select(r => r.ResterauntId).ToList();
+            return ids;
+        }
         public Resteraunt GetResterauntById(int id)
         {
             return dataContext.Resteraunts.Find(id);

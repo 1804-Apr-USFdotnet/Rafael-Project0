@@ -15,12 +15,16 @@ namespace RestarauntReviews.pl
         {
             ResterauntFunctions rest = new ResterauntFunctions();
             ReviewFunctions rev = new ReviewFunctions();
+      
             rest.GetResterauntDetails();
+            Console.WriteLine("search a resteraunt");
 
-
+            string input = Console.ReadLine();
+          //  rev.GetResterauntReviews(input);
+            rest.searchByPartialName(input);
+           
             Console.WriteLine(rest.ConvertToJson());
-            rev.GetAverageResterauntReviews(2);
-            rev.getResterauntAverages();
+         
             rev.GetResterauntReviews("Har");
             Console.ReadLine();
 
