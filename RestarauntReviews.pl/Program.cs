@@ -15,8 +15,10 @@ namespace RestarauntReviews.pl
         {
             ResterauntFunctions rest = new ResterauntFunctions();
             ReviewFunctions rev = new ReviewFunctions();
-      
-            rest.GetResterauntDetails();
+
+            UserInputHandler.UserCommandOptions();
+
+           rest.GetResterauntDetails();
             Console.WriteLine("search a resteraunt");
 
             string input = Console.ReadLine();

@@ -64,6 +64,7 @@ namespace RestarauntReviews.bl
 
                     case "Q":
                     case "q":
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid entry Please enter a valid command. To see a list of commands press ? ");
