@@ -81,43 +81,33 @@ namespace RestarauntReviews.bl
         #endregion
 
 
-        //public void GetResterauntReviews(string name)
-        //{
+        public void GetAllResterauntReviews(string name)
+        {
 
-        //    try
-        //    {
-        //        var resteraunts = resterauntRepo.GetAllResteraunts();
-        //        var reviewsList = reviewsRepo.GetReviews();
-        //        foreach (var res in resteraunts)
-        //        {
-        //            Console.WriteLine($"{res.Name} has a rating of {res.reviews.Rating}");
-        //        }
+         var id =    resterauntRepo.ConvertNameIntoId(name).ToList();
 
+            try
+            {
 
-        //        //var resterauntReviews = from res in resteraunts
-        //        //                        join rev in reviewsList
-        //        //                        on res.ResterauntId equals rev.ResterauntId
-        //        //                        where res.Name.StartsWith(name)
-        //        //                        group new { rev = rev, res = res } by rev.ResterauntId; 
+                var reviews = reviewList.Where(r => id.Contains(r.ResterauntId)).ToList();
 
-        //        //foreach (var item in resterauntReviews)
-        //        //{
-                   
-
-        //        //    foreach (var x in item)
-        //        //    {
-        //        //        Console.WriteLine($"{x.res.Name} has a rating of {x.rev.Rating}");
-
-        //        //    }
-        //        //}
-
-        //    }
-        //    catch (Exception ex)
-        //    {
+                foreach (var item in reviews)
+                {
 
 
-        //    }
-        //}
+                  
+                        Console.WriteLine($" {name }  has  has a rating of {item.Rating} as rated by {item.EmailOfReviewer}");
+
+                    
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
 
         #region AllResterauntAverageRatings
         public void getResterauntAverageRating()
@@ -131,7 +121,7 @@ namespace RestarauntReviews.bl
                           .Join(resteraunts, x => x.Key, y => y.ResterauntId, (x, y) => new {
                               Name = y.Name,
                               AvgRating = x.Average(s => s.Rating)
-                          });
+                          }).OrderBy(r => r.AvgRating).Take(3);
 
 
 
@@ -140,8 +130,28 @@ namespace RestarauntReviews.bl
            
                 Console.WriteLine($"{res.Name} has a rating of {res.AvgRating}");
             }
-   
+     
             }
+
+        public void getResterauntWithTop3AverageRatings()
+        {
+
+            var resteraunts = resterauntRepo.GetAllResteraunts();
+            var reviewsList = reviewsRepo.GetReviews();
+            var results =
+               reviewsList.GroupBy(x => x.ResterauntId, x => new { x.ResterauntId, x.Rating })
+                         .Join(resteraunts, x => x.Key, y => y.ResterauntId, (x, y) => new {
+                             Name = y.Name,
+                             AvgRating = x.Average(s => s.Rating)
+                         }).OrderByDescending(r => r.AvgRating).Take(3);
+            foreach (var res in results)
+            {
+
+                Console.WriteLine($"{res.Name} has a rating of {res.AvgRating}");
+            }
+
+
+        }
 
         public void GetAverageResterauntReviews(int ResterauntId)
         {

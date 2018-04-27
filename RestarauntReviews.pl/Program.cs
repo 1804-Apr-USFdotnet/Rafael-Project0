@@ -18,16 +18,6 @@ namespace RestarauntReviews.pl
 
             UserInputHandler.UserCommandOptions();
 
-           rest.GetResterauntDetails();
-            Console.WriteLine("search a resteraunt");
-
-            string input = Console.ReadLine();
-          //  rev.GetResterauntReviews(input);
-            rest.searchByPartialName(input);
-           
-            Console.WriteLine(rest.ConvertToJson());
-         
-            rev.GetResterauntReviews("Har");
             Console.ReadLine();
 
         }

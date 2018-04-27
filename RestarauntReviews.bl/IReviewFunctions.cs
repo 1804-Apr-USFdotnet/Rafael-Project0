@@ -6,7 +6,7 @@ namespace RestarauntReviews.bl
     {
 
         void GetResterauntReviews(string name);
-        void GetAverageResterauntReviews(int ResterauntId);
-        void GetAveragesOfAllResterauntReviews();
+        //void GetAverageResterauntReviews(int ResterauntId);
+        //void GetAveragesOfAllResterauntReviews();
     }
 }

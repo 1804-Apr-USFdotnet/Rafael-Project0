@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ResterauntReview.dl.Models;
 
 namespace ResterauntReview.dl.Repositories
 {
@@ -13,11 +14,13 @@ namespace ResterauntReview.dl.Repositories
     {
         private readonly ApplicationDbContext dataContext = new ApplicationDbContext();
 
-
+        private readonly ResterauntsEntities _db;
         public ResterauntRepository()
         {
             
         }
+
+        
 
         public ResterauntRepository(ApplicationDbContext dataContext)
         {

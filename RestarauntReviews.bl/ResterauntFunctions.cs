@@ -15,6 +15,7 @@ namespace RestarauntReviews.bl
         #region Declaration of Variables
         ResterauntRepository resterauntRepo = new ResterauntRepository();
         ReviewsRepository reviewsRepo = new ReviewsRepository();
+        
         ErrorManager errorManager = new ErrorManager();
         List<Resteraunt> resterauntList;
         List<Review> reviewList;
@@ -83,13 +84,64 @@ namespace RestarauntReviews.bl
 
         public void searchByPartialName(string userInput)
         {
-          var resteraunt =   resterauntList.Where(x => x.Name.StartsWith(userInput));
+          var resteraunt =   resterauntList.Where(x => x.Name.StartsWith(userInput)).ToList();
 
             foreach (var item in resteraunt)
             {
                 Console.WriteLine(item.Name);
             }
 
+            if(resteraunt.Count < 1)
+            {
+                Console.WriteLine("No resteraunts matched your search");
+
+            }
+
         }
+
+        #region Sorting Resteraunts
+
+
+
+    
+        public void SortbyCity(string city)
+        {
+            List<Resteraunt> resteraunts;
+            try
+            {
+              
+
+
+                    resteraunts = resterauntList.Where(x => x.City.StartsWith(city)).ToList();
+
+
+                    foreach (var item in resteraunts)
+                    {
+
+                        Console.WriteLine(item.Name);
+                    }
+                Console.ReadLine();
+
+                
+
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Sorry there are no resteraunts matching your request, please try another");
+                SortbyCity(Console.ReadLine());
+                
+
+            }
+
+
+
+        }
+        #endregion
     }
+
+
+
+
+
+
 }
