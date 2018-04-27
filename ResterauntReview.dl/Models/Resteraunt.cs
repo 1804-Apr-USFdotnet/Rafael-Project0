@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,9 +19,10 @@ namespace ResterauntReview.dl.Models
         public string Address { get; set; }
         public string City { get; set; }
 
-
+        [JsonIgnoreAttribute]
         public virtual ICollection<Review> Reviews { get; set; }
 
+        [JsonIgnoreAttribute]
         public virtual Review  reviews{ get; set; }
     }
 }

@@ -104,9 +104,9 @@ namespace RestarauntReviews.bl
 
 
     
-        public void SortbyCity(string city)
+        public List<Resteraunt>  SortbyCity(string city)
         {
-            List<Resteraunt> resteraunts;
+            List<Resteraunt> resteraunts = new List<Resteraunt>();
             try
             {
               
@@ -115,14 +115,14 @@ namespace RestarauntReviews.bl
                     resteraunts = resterauntList.Where(x => x.City.StartsWith(city)).ToList();
 
 
-                    foreach (var item in resteraunts)
-                    {
+                //foreach (var item in resteraunts)
+                //{
 
-                        Console.WriteLine(item.Name);
-                    }
-                Console.ReadLine();
+                //    Console.WriteLine(item.Name);
+                //}
+                //Console.ReadLine();
 
-                
+
 
             }
             catch (NullReferenceException ex)
@@ -133,6 +133,7 @@ namespace RestarauntReviews.bl
 
             }
 
+            return resteraunts;
 
 
         }

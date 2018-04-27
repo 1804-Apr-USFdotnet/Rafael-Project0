@@ -26,7 +26,12 @@ namespace RestarauntReviews.bl
                 case "c":
                     Console.WriteLine("enter a city Name");
 
-                    resterauntFunctions.SortbyCity(Console.ReadLine());
+                    var results = resterauntFunctions.SortbyCity(Console.ReadLine());
+                    foreach (var item in results)
+                    {
+                        Console.WriteLine(item.Name);
+                    }
+                    Console.ReadLine();
                     break;
 
                 case "n":

@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201804241626275_Added Columns.Designer.cs">
       <DependentUpon>201804241626275_Added Columns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804271527000_Test.cs" />
+    <Compile Include="Migrations\201804271527000_Test.Designer.cs">
+      <DependentUpon>201804271527000_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Resteraunt.cs" />
     <Compile Include="Models\ResterauntEntity.Context.cs">
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804241626275_Added Columns.resx">
       <DependentUpon>201804241626275_Added Columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804271527000_Test.resx">
+      <DependentUpon>201804271527000_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
