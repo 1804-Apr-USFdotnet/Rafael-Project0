@@ -12,8 +12,8 @@
 ```
 See all listed Resteraunts
 Find a resteraunt 
-see a list of resteraunts in a city
-find the highest rated resteraunts
-review a resteraunt
+See a list of resteraunts in a city
+Find the highest rated resteraunts
+Review a resteraunt
 
 ```
