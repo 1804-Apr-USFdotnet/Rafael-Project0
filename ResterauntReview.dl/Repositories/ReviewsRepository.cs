@@ -72,20 +72,6 @@ namespace ResterauntReview.dl.Repositories
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ApplicationDbContext DataContext = new ApplicationDbContext();
 
 
@@ -104,8 +90,6 @@ namespace ResterauntReview.dl.Repositories
         {
 
             return DataContext.Reviews.ToList();
-
-          
 
         }
 

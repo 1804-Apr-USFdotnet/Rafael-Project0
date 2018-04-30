@@ -78,16 +78,17 @@ namespace RestarauntReviews.bl
             List<Resteraunt> resteraunt = new List<Resteraunt>();
             try
             {
-                 resteraunt = resterauntList.Where(x => x.Name.StartsWith(userInput)).ToList();
+                 resteraunt = resterauntList.Where(x => x.Name.StartsWith(userInput)).DefaultIfEmpty().ToList();
 
                 foreach (var item in resteraunt)
                 {
                     Console.WriteLine(item.Name);
                 }
 
-                if (resteraunt.Count < 1)
+                if (resteraunt.Count() == 1 && resteraunt.First() == null)
                 {
                     Console.WriteLine("No resteraunts matched your search");
+                   
 
                 }
             }
