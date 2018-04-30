@@ -32,51 +32,43 @@ namespace RestarauntReviews.bl
         {
             //Console.WriteLine("search for a resteraunt by typing a name, Press enter when you are finished");
             //Name = Console.ReadLine();
-
-            var Ids = resterauntRepo.ConvertNameIntoId(Name);
-
-
-       var requestedReterauntsReviews = reviewList.Where(x => Ids.Contains(x.ResterauntId)).GroupBy(r => r.ResterauntId,
-              (key, g) => new { ResterauntId = key, Review = g.ToList() }
-                      
-           ).OrderBy(x => x.ResterauntId);
-
-
-            foreach (var item in requestedReterauntsReviews)
-            {
-                foreach (var rev in item.Review)
-                {
-                    Console.WriteLine(rev.ReviewComment  + Name);
-                }
-            }
             try
             {
+                var Ids = resterauntRepo.ConvertNameIntoId(Name);
 
 
-                try
+                var requestedReterauntsReviews = reviewList.Where(x => Ids.Contains(x.ResterauntId)).GroupBy(r => r.ResterauntId,
+                       (key, g) => new { ResterauntId = key, Review = g.ToList() }
+
+                    ).OrderBy(x => x.ResterauntId);
+
+
+                foreach (var item in requestedReterauntsReviews)
                 {
-                    int zero = 0;
-                    int result = 5 / zero;
+                    foreach (var rev in item.Review)
+                    {
+                        Console.WriteLine(rev.ReviewComment + Name);
+                    }
                 }
-                catch (DivideByZeroException ex)
-                {
-
-                    Logger logger = LogManager.GetLogger("databaseLogger");
-
-                    // add custom message and pass in the exception
-                    logger.Error(ex, " ");
-
-
-                }
-
 
             }
+
+
             catch (Exception ex)
             {
-                errorManager.logError(ex, "");
-            }
 
-            Console.ReadLine();
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, " ");
+
+
+
+
+
+            }
+         
+
         }
         #endregion
 
@@ -153,15 +145,7 @@ namespace RestarauntReviews.bl
 
         }
 
-        public void GetAverageResterauntReviews(int ResterauntId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetAveragesOfAllResterauntReviews()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
         #endregion
     }

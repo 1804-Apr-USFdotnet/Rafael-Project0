@@ -42,10 +42,10 @@ namespace ResterauntReview.dl.Repositories
             return dataContext.Resteraunts.Find(id);
         }
 
-        public virtual void InsertAndSubmit(Resteraunt entity)
+        public  void InsertResteraunt(Resteraunt entity)
         {
-            this.dataContext.Set<Resteraunt>().Add(entity);
-            this.SaveChanges();
+         dataContext.Resteraunts.Add(entity);
+           dataContext.SaveChanges();
         }
 
 
@@ -55,19 +55,6 @@ namespace ResterauntReview.dl.Repositories
             this.SaveChanges();
         }
 
-        //public virtual void SoftDeleteAndSubmit(Resteraunt entity)
-        //{
-        //    if (typeof(Resteraunt).GetProperty("Deleted") != null)
-        //    {
-        //        entity.GetType().GetProperty("Deleted").SetValue(entity, DateTime.Now, null);
-        //        this.UpdateAndSubmit(Resteraunt);
-        //    }
-        //    else
-        //    {
-        //        throw new InvalidOperationException("This entity type does not support soft deletion. Please add a DateTime? property called Deleted and try again.");
-        //    }
-
-        //}
 
         public void ExecuteCommand(string sql, params object[] parameters)
         {
@@ -92,18 +79,7 @@ namespace ResterauntReview.dl.Repositories
             return lambda;
         }
 
-        protected IQueryable<Resteraunt> DataSource()
-        {
-            var query = dataContext.Set<Resteraunt>().AsQueryable<Resteraunt>();
-            var property = typeof(Resteraunt).GetProperty("Deleted");
-
-            if (property != null)
-            {
-                query = query.Where(GetExpression("Deleted", null));
-            }
-
-            return query;
-        }
+    
 
         protected virtual void SaveChanges()
         {

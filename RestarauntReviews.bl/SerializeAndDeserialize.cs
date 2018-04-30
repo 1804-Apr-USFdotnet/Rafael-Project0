@@ -1,14 +1,19 @@
 ﻿using Newtonsoft.Json;
+using NLog;
 using ResterauntReview.dl.Models;
 using ResterauntReview.dl.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RestarauntReviews.bl
 {
+
     public static class SerializeAndDeserialize
     {
         #region Declaration of Variables
@@ -29,8 +34,11 @@ namespace RestarauntReviews.bl
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.ReadLine();
+
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
             }
 
             return json;
@@ -42,15 +50,16 @@ namespace RestarauntReviews.bl
             {
                 deserializedObj = JsonConvert.DeserializeObject<IEnumerable<Resteraunt>>(JsonObject).ToList();
 
-                //foreach (var item in deserializedObj)
-                //{
-                //    Console.WriteLine(item);
-                //}
+           
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
             }
 
@@ -59,5 +68,13 @@ namespace RestarauntReviews.bl
 
         }
 
+
+
+
+     
+
+
     }
+
+
 }

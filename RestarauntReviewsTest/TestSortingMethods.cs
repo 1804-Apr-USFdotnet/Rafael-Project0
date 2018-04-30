@@ -40,10 +40,11 @@ namespace RestarauntReviewsTest
             TestRestList = resterauntFunctions.SortbyCity("Mi");
             foreach (var item in TestRestList)
             {
-                Assert.AreEqual(item.City, "Miami");
+                Assert.AreEqual(item.City, "");
 
             }
-          
+            Assert.AreEqual(resteraunt1.City, TestRestList
+                );
         }
     }
 }

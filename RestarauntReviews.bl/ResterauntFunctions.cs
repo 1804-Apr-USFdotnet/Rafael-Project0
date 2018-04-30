@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NLog;
 using ResterauntReview.dl.Models;
 using ResterauntReview.dl.Repositories;
 using System;
@@ -31,20 +32,6 @@ namespace RestarauntReviews.bl
 
         }
 
-        //public  void addResteraunts()
-        //{
-        //    resterauntList.Add(resteraunt1);
-
-        //    resterauntList.Add(resteraunt2);
-        //    resterauntList.Add(resteraunt3);
-        //    resterauntList.Add(resteraunt4);
-        //    resterauntList.Add(resteraunt5);
-        //    resterauntList.Add(resteraunt5);
-        //    resterauntList.Add(resteraunt6);
-        //    resterauntList.Add(resteraunt7);
-
-        //}
-
 
         public void GetResterauntDetails()
         {
@@ -72,8 +59,12 @@ namespace RestarauntReviews.bl
 
             }
 
-            catch
+            catch(Exception ex)
             {
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
 
 
             }
@@ -82,21 +73,34 @@ namespace RestarauntReviews.bl
         }
     
 
-        public void searchByPartialName(string userInput)
+        public List<Resteraunt>  searchByPartialName(string userInput)
         {
-          var resteraunt =   resterauntList.Where(x => x.Name.StartsWith(userInput)).ToList();
-
-            foreach (var item in resteraunt)
+            List<Resteraunt> resteraunt = new List<Resteraunt>();
+            try
             {
-                Console.WriteLine(item.Name);
+                 resteraunt = resterauntList.Where(x => x.Name.StartsWith(userInput)).ToList();
+
+                foreach (var item in resteraunt)
+                {
+                    Console.WriteLine(item.Name);
+                }
+
+                if (resteraunt.Count < 1)
+                {
+                    Console.WriteLine("No resteraunts matched your search");
+
+                }
             }
 
-            if(resteraunt.Count < 1)
+            catch (Exception ex)
             {
-                Console.WriteLine("No resteraunts matched your search");
 
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
             }
-
+            return resteraunt;
         }
 
         #region Sorting Resteraunts
@@ -115,23 +119,22 @@ namespace RestarauntReviews.bl
                     resteraunts = resterauntList.Where(x => x.City.StartsWith(city)).ToList();
 
 
-                //foreach (var item in resteraunts)
-                //{
-
-                //    Console.WriteLine(item.Name);
-                //}
-                //Console.ReadLine();
-
-
 
             }
             catch (NullReferenceException ex)
             {
                 Console.WriteLine("Sorry there are no resteraunts matching your request, please try another");
                 SortbyCity(Console.ReadLine());
-                
+     
 
-            }
+                Logger logger = LogManager.GetLogger("databaseLogger");
+
+                // add custom message and pass in the exception
+                logger.Error(ex, "Error");
+            
+
+
+        }
 
             return resteraunts;
 
